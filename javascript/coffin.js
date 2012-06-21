@@ -1,5 +1,5 @@
 /*
- * Drawer V1.0.0
+ * Coffin.js V1.0.0
  * Copyright 2012, @fat
  * Free to use under the MIT license.
  * http://www.opensource.org/licenses/mit-license.php
