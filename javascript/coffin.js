@@ -27,16 +27,17 @@
 
   $(function () {
 
-    var open = 'coffin-open'
-    var touch = {}
-    var $body = $('body')
+    var open   = 'coffin-open'
+    var touch  = {}
+    var $body  = $('body')
     var $stage = $('.stage')
 
     $body
-      .delegate('.coffin-tab', 'click', function (e) {
-        e.preventDefault()
-      })
-      .delegate('[data-slide="coffin"]', 'click', function () {
+      .delegate('.coffin-tab', 'click', function (e) { e.preventDefault() })
+      .delegate('[data-click="coffin"]', 'click'     , toggleCoffin)
+      .delegate('[data-touch="coffin"]', 'touchstart', toggleCoffin)
+
+    function toggleCoffin() {
 
         $body.toggleClass(open)
 
@@ -49,20 +50,20 @@
         setTimeout(function () {
 
           $body.bind('touchend.coffin', function (e) {
-            if (window.scrollX > 1) {
-              $stage.one('webkitTransitionEnd', function () {
-                $body.removeClass('coffin-static')
-              })
+            if (!window.scrollX) return
 
-              $body
-                .removeClass(open)
-                .unbind('touchend.coffin')
-            }
+            $stage.one('webkitTransitionEnd', function () {
+              $body.removeClass('coffin-static')
+            })
+
+            $body
+              .removeClass(open)
+              .unbind('touchend.coffin')
           })
 
         }, 0)
 
-      })
+      }
 
   })
 
