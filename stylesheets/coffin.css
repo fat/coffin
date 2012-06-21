@@ -29,7 +29,7 @@
 
                                           position: relative; z-index: 10; background: #fff; box-shadow: -4px 0px 10px -5px rgba(0,0,0,.8); }
 
-    .coffin                             { display: none; width: 220px; background: #3b3b3b; overflow: auto; margin-left: 0; position: fixed; top: 0; bottom: 0; left: 0; }
+    .coffin                             { width: 220px; background: #3b3b3b; overflow: auto; margin-left: 0; position: fixed; top: 0; bottom: 0; left: 0; }
     .coffin .pillow                     { background: #222; color: #CCC; padding-left: 15px; font-weight: bold; border-bottom: 1px solid black; font-size: 11px; line-height: 22px;}
     .coffin .nav li                     { margin-bottom: 0; }
     .coffin .nav li a                   { display: block; text-decoration: none; padding-left: 15px; line-height: 30px; color: #fff; font-weight: bold; text-shadow: 0 -1px rgba(0,0,0,.8); border-bottom: 1px solid #333; box-shadow: 0 1px 1px rgba(255, 255, 255, .1); }
@@ -57,9 +57,10 @@
     /* Note: Design for a width of 320px */
 
     @media only screen and (max-width: 767px) {
-      .coffin-tab,
+      .conffin                {visibility: hidden;}
+      .coffin-tab             { display: block; }
       .coffin-static .coffin,
-      .coffin-open .coffin    { display: block; }
+      .coffin-open .coffin    { visibility: visible; }
       .coffin-open.stage      { transform: translate3d(210px,0,0); -webkit-transform: translate3d(210px,0,0); }
       .coffin-static .stage   { overflow-x: auto;  }
       .container              { margin: 0 auto; width: 300px;}
