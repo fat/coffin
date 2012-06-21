@@ -33,7 +33,7 @@
     var $stage = $('.stage')
 
     $body
-      .delegate('[data-slide="coffin"]', 'click', function (e) {
+      .delegate('.coffin-tab', 'click', function (e) {
         e.preventDefault()
       })
       .delegate('[data-slide="coffin"]', 'touchstart', function () {
