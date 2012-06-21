@@ -8,10 +8,11 @@
 
 /*  #Core
 ================================================== */
+    body                               { background: #3B3B3B; }
 
-    .container                         { margin-left: 40px; width: 700px;}
+    .container                         { margin-left: 40px; width: 700px; }
 
-    .stage                             { margin-left: 210px; width: auto; transition: all .3s linear; -webkit-perspective: 1000; -webkit-backface-visibility: hidden;
+    .stage                             { border-radius: 5px; margin-left: 210px; width: auto; transition: all .3s linear; -webkit-perspective: 1000; -webkit-backface-visibility: hidden;
 
                                                   transition: -webkit-transform .1s linear;
                                                -o-transition: -webkit-transform .1s linear;
