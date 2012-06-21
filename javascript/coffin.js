@@ -27,20 +27,20 @@
 
   $(function () {
 
-    var out = 'coffin-open'
+    var open = 'coffin-open'
     var touch = {}
     var $body = $('body')
     var $stage = $('.stage')
 
     $body.delegate('[data-slide="coffin"]', 'touchstart', function () {
 
-      $body.toggleClass(out)
+      $body.toggleClass(open)
 
       $stage.one('webkitTransitionEnd', function () {
         $body.toggleClass('coffin-static')
       })
 
-      if (!$body.hasClass(out)) return
+      if (!$body.hasClass(open)) return
 
       setTimeout(function () {
 
@@ -51,7 +51,7 @@
             })
 
             $body
-              .removeClass(out)
+              .removeClass(open)
               .unbind('touchend.coffin')
           }
         })
