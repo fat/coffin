@@ -36,7 +36,7 @@
       .delegate('.coffin-tab', 'click', function (e) {
         e.preventDefault()
       })
-      .delegate('[data-slide="coffin"]', 'touchstart', function () {
+      .delegate('[data-slide="coffin"]', 'click', function () {
 
         $body.toggleClass(open)
 
