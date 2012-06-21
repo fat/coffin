@@ -57,11 +57,11 @@
     /* Note: Design for a width of 320px */
 
     @media only screen and (max-width: 767px) {
-      .conffin                {visibility: hidden;}
+      .coffin                 { visibility: hidden; }
       .coffin-tab             { display: block; }
       .coffin-static .coffin,
       .coffin-open .coffin    { visibility: visible; }
-      .coffin-open.stage      { transform: translate3d(210px,0,0); -webkit-transform: translate3d(210px,0,0); }
+      .coffin-open .stage     { transform: translate3d(210px,0,0); -webkit-transform: translate3d(210px,0,0); }
       .coffin-static .stage   { overflow-x: auto;  }
       .container              { margin: 0 auto; width: 300px;}
       .stage                  { margin-left: 0; }
