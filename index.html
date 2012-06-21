@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
+<!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--><html lang="en"> <!--<![endif]-->
+<head>
+
+  <!-- Basic Page Needs
+  ================================================== -->
+  <meta charset="utf-8">
+  <title>Coffin: The skeleton drawer</title>
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <!-- Mobile Specific Metas
+  ================================================== -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <!-- CSS
+  ================================================== -->
+  <link rel="stylesheet" href="stylesheets/base.css">
+  <link rel="stylesheet" href="stylesheets/skeleton.css">
+  <link rel="stylesheet" href="stylesheets/layout.css">
+  <link rel="stylesheet" href="stylesheets/coffin.css">
+
+  <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+
+  <!-- Favicons
+  ================================================== -->
+  <link rel="shortcut icon" href="images/favicon.ico">
+  <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
+
+</head>
+
+<body>
+
+
+  <!-- Primary Page Layout
+  ================================================== -->
+
+  <!-- Defines a simple slide tab -->
+
+  <a href="#" data-slide="coffin" class="coffin-tab">
+    <div class="coffin-icon-bar"></div>
+    <div class="coffin-icon-bar"></div>
+    <div class="coffin-icon-bar"></div>
+  </a>
+
+  <!-- Defines the simple coffin drawer -->
+
+  <div class="coffin">
+    <div class="pillow">coffin</div>
+    <ul class="nav">
+      <li><a href="#about">About Coffin</a></li>
+      <li><a href="#gettingStarted">Getting Started</a></li>
+      <li><a href="#contributing">Contributing</a></li>
+      <li><a href="//github.com/fat">@fat</a></li>
+    </ul>
+  </div>
+
+  <!-- Defines the coffin stage -->
+  <div class="stage">
+    <div class="container">
+      <div class="twelve columns content">
+        <h1 class="remove-bottom" style="margin-top: 40px">Coffin</h1>
+        <h5>Version 1.0.0-rc.1</h5>
+
+        <hr>
+
+        <h3 id="about">About Coffin</h3>
+        <p>Coffin is a UI component built on top of the <a href="getskeleton.com">Skeleton</a> framework, providing a simple, collapsible left shelf. It's fully responsive and automatically collapses in mobile views - allowing you to swipe away and toggle a nagivation in and out of view.<p>
+
+        <h5>Versioning</h5>
+        <p>Coffin stictly follows semver as defined here <a href="http://semver.org/">http://semver.org/</a></p>
+
+        <h5>Dependencies</h5>
+        <p>Coffin was built to work on top of <a href="//zeptojs.com">zepto.js</a>, but should work with <a href="//jquery.com">jquery</a> as well if you're already using that.</p>
+
+        <hr>
+
+        <h3 id="gettingStarted">Getting Started</h3>
+        <p>Using coffin is super easy. Just define a <code>.coffin</code>, a <code>.stage</code>, and an element to toggle your coffin into view (<code>data-slide="drawer"</code>).</p>
+
+        <h5>Assets</h5>
+        <p>To use coffin first make sure you include skeleton's CSS as well as a link to zepto or jquery. You'll want to have your assets loaded in a similar order as to what is shown directly below.</p>
+        <script src="https://gist.github.com/2964360.js"></script>
+
+        <h5>Markup</h5>
+        <p>There are three main things to note when marking up a page with a coffin.</p>
+        <ol>
+          <li><strong>data-slide="coffin"</strong> - this element will toggle the coffin in and out of view when at a mobile size. You can place this attribute on any element, but we do provide a <strong>.coffin-tab</strong> style as a very simple ui tab which will only be shown in mobile views.</li>
+          <li><strong>.stage</strong> - a wrapper for the container element. Used to controll the sliding of the main content of a page. Note: Containers within a .stage class work off a 12-column grid rather than a 16-column grid, which is different than a standard skeleton implementation and done in order to make space for an open coffin.</li>
+          <li><strong>.coffin</strong> - the coffin is the side shelf. It can contain a <strong>.pillow</strong> with is a top title bar as well as a <strong>ul.nav</strong>.
+        </ol>
+        <p>A simple implementation for the above markup might look something like this:</p>
+        <script src="https://gist.github.com/2964424.js"></script>
+
+        <hr>
+
+        <h3 id="contributing">Contributing</h3>
+        <p>This project is hosted on github. Feel free to file an issue or open a pull request against the project <a href="//github.com/fat/coffin">here</a>.</p>
+        <p>If you are opening a bug, please provide a link to a reproducible test case - preferably in jsfiddle or jsbin. If you are submiting a pull request, please do so from a feature branch. Thanks!</p>
+
+        <hr>
+
+        <p><small>Created by @<a href="http://www.twitter.com/fat">fat</a>, 2012 ©</small></p>
+      </div>
+
+    </div><!-- container -->
+  </div><!-- closet -->
+
+
+  <!-- JS
+  ================================================== -->
+  <script src="http://zeptojs.com/zepto.js"></script>
+  <script src="javascript/coffin.js"></script>
+
+<!-- End Document
+================================================== -->
+</body>
+</html>
