@@ -44,7 +44,7 @@
 
   <!-- Defines a simple slide tab -->
 
-  <a href="#" data-touch="coffin" class="coffin-tab">
+  <a href="#" data-coffin="touch" class="coffin-tab">
     <div class="coffin-icon-bar"></div>
     <div class="coffin-icon-bar"></div>
     <div class="coffin-icon-bar"></div>
@@ -55,9 +55,9 @@
   <div class="coffin">
     <div class="pillow">coffin</div>
     <ul class="nav">
-      <li><a data-click="coffin" href="#about">About Coffin</a></li>
-      <li><a data-click="coffin" href="#gettingStarted">Getting Started</a></li>
-      <li><a data-click="coffin" href="#contributing">Contributing</a></li>
+      <li><a data-coffin="click" href="#about">About Coffin</a></li>
+      <li><a data-coffin="click" href="#gettingStarted">Getting Started</a></li>
+      <li><a data-coffin="click" href="#contributing">Contributing</a></li>
       <li><a href="//github.com/fat">@fat</a></li>
     </ul>
   </div>
@@ -92,12 +92,12 @@
         <h5>Markup</h5>
         <p>There are three main things to note when marking up a page with a coffin.</p>
         <ol>
-          <li><strong>data-slide="coffin"</strong> - this element will toggle the coffin in and out of view when at a mobile size. You can place this attribute on any element, but we do provide a <strong>.coffin-tab</strong> style as a very simple ui tab which will only be shown in mobile views.</li>
+          <li><strong>data-coffin="touch" & data-coffin="click"</strong> - these attributes will toggle the coffin in and out of view when at a mobile size. You can place these attributes on any element, but we do provide a <strong>.coffin-tab</strong> style as a very simple ui tab which will only be shown in mobile views. The difference between touch and click is that touch will fire the toggle on touchstart (faster in mobile) and click will fire the toggle on click (useful for nav elements where you want the default click action to execute).</li>
           <li><strong>.stage</strong> - a wrapper for the container element. Used to controll the sliding of the main content of a page. Note: Containers within a .stage class work off a 12-column grid rather than a 16-column grid, which is different than a standard skeleton implementation and done in order to make space for an open coffin.</li>
           <li><strong>.coffin</strong> - the coffin is the side shelf. It can contain a <strong>.pillow</strong> with is a top title bar as well as a <strong>ul.nav</strong>.
         </ol>
         <p>A simple implementation for the above markup might look something like this:</p>
-        <script src="https://gist.github.com/2964424.js"></script>
+        <script src="https://gist.github.com/2964424.js"> </script>
 
         <hr>
 

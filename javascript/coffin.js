@@ -34,8 +34,8 @@
 
     $body
       .delegate('.coffin-tab', 'click', function (e) { e.preventDefault() })
-      .delegate('[data-click="coffin"]', 'click'     , toggleCoffin)
-      .delegate('[data-touch="coffin"]', 'touchstart', toggleCoffin)
+      .delegate('[data-coffin="click"]', 'click'     , toggleCoffin)
+      .delegate('[data-coffin="touch"]', 'touchstart', toggleCoffin)
 
     function toggleCoffin() {
 
