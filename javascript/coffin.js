@@ -31,11 +31,12 @@
     var touch  = {}
     var $body  = $('body')
     var $stage = $('.stage')
+    var touchstart = is_touch_device = 'ontouchstart' in document.documentElement ? 'touchstart' : 'click'
 
     $body
       .delegate('.coffin-tab', 'click', function (e) { e.preventDefault() })
-      .delegate('[data-coffin="click"]', 'click'     , toggleCoffin)
-      .delegate('[data-coffin="touch"]', 'touchstart', toggleCoffin)
+      .delegate('[data-coffin="click"]', 'click'   , toggleCoffin)
+      .delegate('[data-coffin="touch"]', touchstart, toggleCoffin)
 
     function toggleCoffin() {
 
@@ -45,7 +46,7 @@
           $body.toggleClass('coffin-static')
         })
 
-        if (!$body.hasClass(open)) return
+        if (!$body.hasClass(open) || touchstart == 'click') return
 
         setTimeout(function () {
 
