@@ -31,7 +31,7 @@
     var touch  = {}
     var $body  = $('body')
     var $stage = $('.stage')
-    var touchstart = is_touch_device = 'ontouchstart' in document.documentElement ? 'touchstart' : 'click'
+    var touchstart = 'ontouchstart' in document.documentElement ? 'touchstart' : 'click'
 
     $body
       .delegate('.coffin-tab', 'click', function (e) { e.preventDefault() })
