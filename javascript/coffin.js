@@ -63,9 +63,7 @@
 
           if (!window.scrollX) return
 
-          var willScroll = 210 - window.scrollX
-
-          alert(willScroll);
+          var willScroll = (210 - window.scrollX) >= 0
 
           isOpen = true
 
