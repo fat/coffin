@@ -65,7 +65,7 @@
 
           isOpen = true
 
-          $stage.one('webkitTransitionEnd', transitionComplete)
+          210 - window.scrollX ? $stage.one('webkitTransitionEnd', transitionComplete) : transitionComplete()
 
           $stage.css({
             '-webkit-transform': translate3d(),
