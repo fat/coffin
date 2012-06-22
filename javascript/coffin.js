@@ -14,7 +14,7 @@
   $(function () {
 
     var open   = 'coffin-open'
-    var touch  = {}
+
     var $body  = $('body')
     var $stage = $('.stage')
     var touchstart = 'ontouchstart' in document.documentElement ? 'touchstart' : 'click'
@@ -24,33 +24,55 @@
       .delegate('[data-coffin="click"]', 'click'   , toggleCoffin)
       .delegate('[data-coffin="touch"]', touchstart, toggleCoffin)
 
+    function translate3d (open) {
+      return 'translate3d(' + (open  ? '210px' : '-' + (210 - window.scrollX) + 'px') + ',0,0)'
+    }
+
     function toggleCoffin() {
 
-        $body.toggleClass(open)
+      var isOpen = $body.hasClass(open)
 
-        $stage.one('webkitTransitionEnd', function () {
-          $body.toggleClass('coffin-static')
+      function transitionComplete () {
+
+        if (isOpen) $body.removeClass(open)
+
+        $stage.css({
+          '-webkit-transform': '',
+          '-webkit-transition': '',
+          'left': !isOpen ? 210 : ''
         })
 
-        if (!$body.hasClass(open) || touchstart == 'click') return
+      }
 
-        setTimeout(function () {
+      if (!isOpen) $body.addClass(open)
 
-          $body.bind('touchend.coffin', function (e) {
-            if (!window.scrollX) return
+      $stage.one('webkitTransitionEnd', transitionComplete)
 
-            $stage.one('webkitTransitionEnd', function () {
-              $body.removeClass('coffin-static')
-            })
+      $stage.css({
+        '-webkit-transform': translate3d(!isOpen),
+        '-webkit-transition': '-webkit-transform .1s linear'
+      })
 
-            $body
-              .removeClass(open)
-              .unbind('touchend.coffin')
+      if (isOpen || touchstart == 'click') return
+
+      setTimeout(function () {
+
+        $body.one('touchend.coffin', function (e) {
+
+          if (!window.scrollX) return
+
+          $stage.one('webkitTransitionEnd', transitionComplete)
+
+          $stage.css({
+            '-webkit-transform': translate3d(),
+            '-webkit-transition': '-webkit-transform .1s linear'
           })
 
-        }, 0)
+        })
 
-      }
+      }, 0)
+
+    }
 
   })
 
