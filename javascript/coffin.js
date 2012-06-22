@@ -57,9 +57,11 @@
 
       setTimeout(function () {
 
-        $body.one('touchend.coffin', function (e) {
+        $body.bind('touchend.coffin', function (e) {
 
           if (!window.scrollX) return
+
+          isOpen = true
 
           $stage.one('webkitTransitionEnd', transitionComplete)
 
@@ -67,6 +69,8 @@
             '-webkit-transform': translate3d(),
             '-webkit-transition': '-webkit-transform .1s linear'
           })
+
+          $body.unbind('touchend.coffin')
 
         })
 
