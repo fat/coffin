@@ -98,10 +98,12 @@
             })
 
             if (!willScroll) transitionComplete()
-            else $body
-              .unbind('touchstart.coffin')
-              .unbind('touchmove.coffin')
-              .unbind('touchend.coffin')
+            else {
+              $body
+                .unbind('touchstart.coffin')
+                .unbind('touchmove.coffin')
+                .unbind('touchend.coffin')
+            }
 
           })
 
