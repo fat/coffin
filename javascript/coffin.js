@@ -8,27 +8,13 @@
 !function ($) {
 
   /*
-   * html5 boilerplate scroll fix
-   */
-
-  var viewportmeta = document.querySelector && document.querySelector('meta[name="viewport"]')
-  var ua = navigator.userAgent
-
-  if (viewportmeta && /iPhone|iPad|iPod/.test(ua) && !/Opera Mini/.test(ua)) {
-    viewportmeta.content = "width=device-width, minimum-scale=1.0, maximum-scale=1.0"
-    document.addEventListener("gesturestart", function () {
-      viewportmeta.content = "width=device-width, minimum-scale=0.25, maximum-scale=1.6"
-    }, false)
-  }
-
-  /*
    * coffin toggle for mobile
    */
 
   $(function () {
 
     var open   = 'coffin-open'
-    var touch  = {}
+
     var $body  = $('body')
     var $stage = $('.stage')
     var touchstart = 'ontouchstart' in document.documentElement ? 'touchstart' : 'click'
@@ -38,33 +24,65 @@
       .delegate('[data-coffin="click"]', 'click'   , toggleCoffin)
       .delegate('[data-coffin="touch"]', touchstart, toggleCoffin)
 
+    function translate3d (open) {
+      return 'translate3d(' + (open  ? '210px' : '-' + (210 - window.scrollX) + 'px') + ',0,0)'
+    }
+
     function toggleCoffin() {
 
-        $body.toggleClass(open)
+      var isOpen = $body.hasClass(open)
 
-        $stage.one('webkitTransitionEnd', function () {
-          $body.toggleClass('coffin-static')
+      function transitionComplete () {
+
+        if (isOpen) $body.removeClass(open)
+
+        $stage.css({
+          '-webkit-transform': '',
+          '-webkit-transition': '',
+          'left': !isOpen ? 210 : ''
         })
 
-        if (!$body.hasClass(open) || touchstart == 'click') return
-
-        setTimeout(function () {
-
-          $body.bind('touchend.coffin', function (e) {
-            if (!window.scrollX) return
-
-            $stage.one('webkitTransitionEnd', function () {
-              $body.removeClass('coffin-static')
-            })
-
-            $body
-              .removeClass(open)
-              .unbind('touchend.coffin')
-          })
-
-        }, 0)
+        $stage.unbind('webkitTransitionEnd.coffin')
 
       }
+
+      if (!isOpen) $body.addClass(open)
+
+      $stage.bind('webkitTransitionEnd.coffin', transitionComplete)
+
+      $stage.css({
+        '-webkit-transform': translate3d(!isOpen),
+        '-webkit-transition': '-webkit-transform .1s linear'
+      })
+
+      if (isOpen || touchstart == 'click') return
+
+      setTimeout(function () {
+
+        $body.bind('touchend.coffin', function (e) {
+
+          if (!window.scrollX) return
+
+          var willScroll = (210 - window.scrollX) >= 0
+
+          isOpen = true
+
+          if (willScroll) $stage.one('webkitTransitionEnd', transitionComplete)
+
+          $stage.css({
+            '-webkit-transform': translate3d(),
+            '-webkit-transition': '-webkit-transform .1s linear'
+          })
+
+          if (!willScroll) transitionComplete()
+
+          $body.unbind('touchend.coffin')
+
+        })
+
+      }, 0)
+
+    }
 
   })
 
