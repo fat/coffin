@@ -36,11 +36,13 @@
 
         if (isOpen) $body.removeClass(open)
 
-        $stage.css({
-          '-webkit-transform': '',
-          '-webkit-transition': '',
-          'left': !isOpen ? 210 : ''
-        })
+        setTimeout(function () {
+          $stage.css({
+            '-webkit-transform': '',
+            '-webkit-transition': '',
+            'left': !isOpen ? 210 : ''
+          })
+        }, 0)
 
       }
 
