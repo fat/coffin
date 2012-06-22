@@ -44,6 +44,11 @@
 
         $stage.unbind('webkitTransitionEnd.coffin')
 
+        $body
+          .unbind('touchstart.coffin')
+          .unbind('touchmove.coffin')
+          .unbind('touchend.coffin')
+
       }
 
       if (!isOpen) $body.addClass(open)
@@ -93,8 +98,7 @@
             })
 
             if (!willScroll) transitionComplete()
-
-            $body
+            else $body
               .unbind('touchstart.coffin')
               .unbind('touchmove.coffin')
               .unbind('touchend.coffin')
