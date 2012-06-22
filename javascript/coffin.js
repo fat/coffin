@@ -25,7 +25,7 @@
       .delegate('[data-coffin="touch"]', touchstart, toggleCoffin)
 
     function translate3d (open) {
-      return 'translate3d(' + (open  ? '210px' : '-' + (210 - window.scrollX) + 'px') + ',0,0)'
+      return 'translate3d(' + (open  ? '210px' : Math.max(-1 * (210 - window.scrollX), -210) + 'px') + ',0,0)'
     }
 
     function toggleCoffin() {
@@ -88,18 +88,29 @@
 
             if (!window.scrollX) return
 
-            var willScroll = (210 - window.scrollX) >= 0
+            var scrollX = window.scrollX
 
-            isOpen = true
+            var willScroll = (210 - scrollX) >= 0
 
-            if (willScroll) $stage.one('webkitTransitionEnd', transitionComplete)
+            var interval = setInterval(function () {
 
-            $stage.css({
-              '-webkit-transform': translate3d(),
-              '-webkit-transition': '-webkit-transform .1s linear'
-            })
+              if (scrollX != window.scrollX) return scrollX = window.scrollX
 
-            if (!willScroll) transitionComplete()
+              clearInterval(interval);
+
+              isOpen = true
+
+              if (willScroll) $stage.one('webkitTransitionEnd', transitionComplete)
+
+              $stage.css({
+                '-webkit-transform': translate3d(),
+                '-webkit-transition': '-webkit-transform .1s linear'
+              })
+
+              if (!willScroll) transitionComplete()
+
+            }, 10)
+
 
           })
 
