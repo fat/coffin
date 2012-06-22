@@ -62,8 +62,7 @@
         '-webkit-transition': '-webkit-transform .1s linear'
       })
 
-      //if (isOpen || touchstart == 'click') return
-      if (isOpen) return
+      if (isOpen || touchstart == 'click') return
 
       setTimeout(function () {
 
@@ -93,14 +92,14 @@
 
             isOpen = true
 
-            // if (willScroll) $stage.one('webkitTransitionEnd', transitionComplete)
+            if (willScroll) $stage.one('webkitTransitionEnd', transitionComplete)
 
-            // $stage.css({
-            //   '-webkit-transform': translate3d(),
-            //   '-webkit-transition': '-webkit-transform .1s linear'
-            // })
+            $stage.css({
+              '-webkit-transform': translate3d(),
+              '-webkit-transition': '-webkit-transform .1s linear'
+            })
 
-            transitionComplete()
+            if (!willScroll) transitionComplete()
 
           })
 
