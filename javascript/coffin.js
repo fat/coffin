@@ -61,22 +61,26 @@
 
         $body.bind('touchend.coffin', function (e) {
 
-          if (!window.scrollX) return
+          setTimeout(funciton () {
+            if (!window.scrollX) return
 
-          var willScroll = (210 - window.scrollX) >= 0
+            var willScroll = (210 - window.scrollX) >= 0
 
-          isOpen = true
+            isOpen = true
 
-          if (willScroll) $stage.one('webkitTransitionEnd', transitionComplete)
+            if (willScroll) $stage.one('webkitTransitionEnd', transitionComplete)
 
-          $stage.css({
-            '-webkit-transform': translate3d(),
-            '-webkit-transition': '-webkit-transform .1s linear'
-          })
+            $stage.css({
+              '-webkit-transform': translate3d(),
+              '-webkit-transition': '-webkit-transform .1s linear'
+            })
 
-          if (!willScroll) transitionComplete()
+            if (!willScroll) transitionComplete()
 
-          $body.unbind('touchend.coffin')
+            $body.unbind('touchend.coffin')
+
+          }, 50)
+
 
         })
 
