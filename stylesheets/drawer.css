@@ -1,0 +1,65 @@
+/*
+ * Drawer V1.0.0
+ * Copyright 2012, @fat
+ * Free to use under the MIT license.
+ * http://www.opensource.org/licenses/mit-license.php
+ */
+
+
+/*  #Core (Drawer)
+================================================== */
+
+    .container                         { margin-left: 40px; width: 700px;}
+
+    .stage                             { margin-left: 210px; width: auto; transition: all .3s linear; -webkit-perspective: 1000; -webkit-backface-visibility: hidden;
+
+                                                  transition: -webkit-transform .1s linear;
+                                               -o-transition: -webkit-transform .1s linear;
+                                             -moz-transition: -webkit-transform .1s linear;
+                                          -webkit-transition: -webkit-transform .1s linear;
+
+                                        position: relative; z-index: 2; background: #fff; box-shadow: -4px 0px 10px -5px rgba(0,0,0,.8); }
+
+    .drawer                            { width: 220px; background: #3b3b3b; overflow: auto; margin-left: 0; position: fixed; top: 0; bottom: 0; left: 0; }
+    .drawer .bar                       { background: #222; color: #CCC; padding-left: 15px; font-weight: bold; border-bottom: 1px solid black; font-size: 11px; line-height: 22px;}
+    .drawer .nav li                    { margin-bottom: 0; }
+    .drawer .nav li a                  { display: block; text-decoration: none; padding-left: 15px; line-height: 30px; color: #fff; font-weight: bold; text-shadow: 0 -1px rgba(0,0,0,.8); border-bottom: 1px solid #333; box-shadow: 0 1px 1px rgba(255, 255, 255, .1); }
+    .drawer .nav li a:hover            { background: rgba(0,0,0,.1); }
+
+    .slide-tab                         { display: none; position: fixed; top: 0; right: 10px; z-index: 100; color: #fff; text-decoration: none; background: #000; padding: 6px 8px; border-radius: 0 0 5px 5px; }
+    .slide-icon-bar                    { display: block; width: 18px; height: 2px; background-color: rgba(255, 255, 255, .6); -webkit-border-radius: 1px; -moz-border-radius: 1px; border-radius: 1px; -webkit-box-shadow: 0 1px 0 rgba(0, 0, 0, 0.25); -moz-box-shadow: 0 1px 0 rgba(0, 0, 0, 0.25); box-shadow: 0 1px 0 rgba(0, 0, 0, 0.25); margin-top: 3px; }
+    .slide-icon-bar:first-child        { margin-top: 0;}
+    .slide-tab:hover .slide-icon-bar   { background-color: rgba(255,255,255,.8);}
+
+
+/* #Tablet (Portrait)
+================================================== */
+
+    /* Note: Design for a width of 768px */
+
+    @media only screen and (min-width: 768px) and (max-width: 959px) {
+      .container  { width: 556px; }
+    }
+
+/*  #Mobile (Portrait)
+================================================== */
+
+    /* Note: Design for a width of 320px */
+
+    @media only screen and (max-width: 767px) {
+      .slide-tab                { display: block; }
+      .container                { margin: 0 auto; width: 300px;}
+      .stage                    { margin-left: 0; }
+      .drawer-out .stage        { transform: translate3d(210px,0,0); -webkit-transform: translate3d(210px,0,0); }
+      .drawer-static .stage     { overflow-x: auto;  }
+    }
+
+
+/* #Mobile (Landscape)
+================================================== */
+
+    /* Note: Design for a width of 480px */
+
+    @media only screen and (min-width: 480px) and (max-width: 767px) {
+      .container { width: 420px;}
+    }
