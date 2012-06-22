@@ -43,7 +43,6 @@
         })
 
         $stage.unbind('webkitTransitionEnd.coffin')
-        alert('unbind')
 
       }
 
