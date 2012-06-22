@@ -19,7 +19,7 @@
 
     body                                { background: #3B3B3B; overflow: hidden; }
 
-    .viewport                           { position: absolute; top: 0; right: 0; left: 0; bottom: 0; overflow-y: hidden; }
+    .viewport                           { position: absolute; top: 0; right: 0; left: 0; bottom: 0; overflow-x: hidden; }
 
     .container                          { margin-left: 40px; width: 700px; }
     .stage                              { border-radius: 5px; margin-left: 210px; width: auto; transition: all .3s linear; -webkit-perspective: 1000; -webkit-backface-visibility: hidden; position: relative; z-index: 10; background: #fff; box-shadow: -4px 0px 10px -5px rgba(0,0,0,.8); }
