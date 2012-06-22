@@ -36,15 +36,15 @@
 
         if (isOpen) $body.removeClass(open)
 
-        setTimeout(function () {
-          $stage.css({
-            '-webkit-transform': '',
-            '-webkit-transition': '',
-            'left': !isOpen ? 210 : ''
-          })
-        }, 0)
+        $stage.css({
+          '-webkit-transform': '',
+          '-webkit-transition': '',
+          'left': !isOpen ? 210 : ''
+        })
 
         $stage.unbind('webkitTransitionEnd.coffin')
+
+        alert('complete');
 
       }
 
