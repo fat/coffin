@@ -44,8 +44,6 @@
 
         $stage.unbind('webkitTransitionEnd.coffin')
 
-        alert('complete');
-
       }
 
       if (!isOpen) $body.addClass(open)
@@ -66,6 +64,8 @@
           if (!window.scrollX) return
 
           var willScroll = !!210 - window.scrollX
+
+          alert(willScroll);
 
           isOpen = true
 
