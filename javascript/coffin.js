@@ -13,8 +13,6 @@
 
   $(function () {
 
-    var xStart
-    var yStart
     var open   = 'coffin-open'
 
     var $body  = $('body')
@@ -25,20 +23,6 @@
       .delegate('.coffin-tab', 'click', function (e) { e.preventDefault() })
       .delegate('[data-coffin="click"]', 'click'   , toggleCoffin)
       .delegate('[data-coffin="touch"]', touchstart, toggleCoffin)
-
-
-    $body.bind('touchstart', function (e) {
-      xStart = e.touches[0].screenX
-      yStart = e.touches[0].screenY
-    })
-
-    $body.bind('touchmove', function (e) {
-      var xMovement = Math.abs(e.touches[0].screenX - xStart)
-      var yMovement = Math.abs(e.touches[0].screenY - yStart)
-      if((yMovement * 3) > xMovement) {
-        e.preventDefault()
-      }
-    })
 
     function translate3d (open) {
       return 'translate3d(' + (open  ? '210px' : '-' + (210 - window.scrollX) + 'px') + ',0,0)'
@@ -75,26 +59,47 @@
 
       setTimeout(function () {
 
-        $body.bind('touchend.coffin', function (e) {
+        var xStart
+        var yStart
 
-          if (!window.scrollX) return
+        $body
 
-          var willScroll = (210 - window.scrollX) >= 0
-
-          isOpen = true
-
-          if (willScroll) $stage.one('webkitTransitionEnd', transitionComplete)
-
-          $stage.css({
-            '-webkit-transform': translate3d(),
-            '-webkit-transition': '-webkit-transform .1s linear'
+          .bind('touchstart.coffin', function (e) {
+            xStart = e.touches[0].screenX
+            yStart = e.touches[0].screenY
           })
 
-          if (!willScroll) transitionComplete()
+          .bind('touchmove.coffin', function (e) {
+            var xMovement = Math.abs(e.touches[0].screenX - xStart)
+            var yMovement = Math.abs(e.touches[0].screenY - yStart)
+            if ((yMovement * 3) > xMovement) {
+              e.preventDefault()
+            }
+          })
 
-          $body.unbind('touchend.coffin')
+          .bind('touchend.coffin', function (e) {
 
-        })
+            if (!window.scrollX) return
+
+            var willScroll = (210 - window.scrollX) >= 0
+
+            isOpen = true
+
+            if (willScroll) $stage.one('webkitTransitionEnd', transitionComplete)
+
+            $stage.css({
+              '-webkit-transform': translate3d(),
+              '-webkit-transition': '-webkit-transform .1s linear'
+            })
+
+            if (!willScroll) transitionComplete()
+
+            $body
+              .unbind('touchstart.coffin')
+              .unbind('touchmove.coffin')
+              .unbind('touchend.coffin')
+
+          })
 
       }, 0)
 
