@@ -61,7 +61,7 @@
 
         $body.bind('touchend.coffin', function (e) {
 
-          setTimeout(funciton () {
+          setTimeout(function () {
             if (!window.scrollX) return
 
             var willScroll = (210 - window.scrollX) >= 0
