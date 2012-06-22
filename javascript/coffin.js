@@ -63,14 +63,18 @@
 
           if (!window.scrollX) return
 
+          var willScroll = !!210 - window.scrollX
+
           isOpen = true
 
-          210 - window.scrollX ? $stage.one('webkitTransitionEnd', transitionComplete) : transitionComplete()
+          if (willScroll) $stage.one('webkitTransitionEnd', transitionComplete)
 
           $stage.css({
             '-webkit-transform': translate3d(),
             '-webkit-transition': '-webkit-transform .1s linear'
           })
+
+          if (!willScroll) transitionComplete()
 
           $body.unbind('touchend.coffin')
 
