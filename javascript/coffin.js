@@ -11,6 +11,8 @@
    * coffin toggle for mobile
    */
 
+   document.ontouchmove = function(e) {e.preventDefault()};
+
   $(function () {
 
     var open   = 'coffin-open'
