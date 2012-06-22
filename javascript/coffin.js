@@ -44,11 +44,13 @@
           })
         }, 0)
 
+        $stage.unbind('webkitTransitionEnd.coffin')
+
       }
 
       if (!isOpen) $body.addClass(open)
 
-      $stage.one('webkitTransitionEnd', transitionComplete)
+      $stage.bind('webkitTransitionEnd.coffin', transitionComplete)
 
       $stage.css({
         '-webkit-transform': translate3d(!isOpen),
