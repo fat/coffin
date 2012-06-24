@@ -11,109 +11,87 @@
    * coffin toggle for mobile
    */
 
-  $(function () {
+  var xStart;
+  var xMovement = 0;
+  var xEnd = 0;
+  var fraction = 1/3;
+  var isOpen = false;
+  var stage = document.querySelector('.stage');
+  var isTouch = 'ontouchstart' in document.documentElement;
+  var clickSelector = '[data-coffin=click]';
+  var touchSelector = '[data-coffin=touch]';
+  var windowSize = document.body.offsetWidth;
 
-    var open       = 'coffin-open'
-    var $body      = $('body')
-    var $stage     = $('.stage')
-    var touchstart = 'ontouchstart' in document.documentElement ? 'touchstart' : 'click'
+  if (isTouch) clickSelector += ', ' + touchSelector;
 
-    $body
-      .delegate('.coffin-tab', 'click', function (e) { e.preventDefault() })
-      .delegate('[data-coffin="click"]', 'click'   , toggleCoffin)
-      .delegate('[data-coffin="touch"]', touchstart, toggleCoffin)
+  function translate3d (i) {
+      stage.style.webkitTransform = 'translate3d(' + i + 'px,0,0)';
+  }
 
-    function translate3d (open) {
-      return 'translate3d(' + (open  ? '270' : -1 * Math.max(270 - window.scrollX, 270)) + 'px,0,0)'
+  function closest (element, selector) {
+    while (element && !element.webkitMatchesSelector(selector)) {
+        element = element.parentNode;
+        if (!element.webkitMatchesSelector) return false;
     }
+    return element;
+  }
 
-    function toggleCoffin() {
+  function touchEnd () {
+      if (windowSize > 767) return;
 
-      var isOpen = $body.hasClass(open)
+      var transitionEnd = function () {
+          stage.style.webkitTransition = '';
+          stage.removeEventListener('webkitTransitionEnd', transitionEnd);
+      };
 
-      function transitionComplete () {
-
-        if (isOpen) $body.removeClass(open)
-
-        $stage.css({
-          '-webkit-transform'   : '',
-          '-webkit-transition'  : '',
-          'left': !isOpen ? 270 : ''
-        })
-
-        $stage.unbind('webkitTransitionEnd.coffin')
-
-        if (isOpen) {
-          $body
-            .unbind('touchstart.coffin')
-            .unbind('touchmove.coffin')
-            .unbind('touchend.coffin')
-        }
-
+      if (isOpen) {
+          xEnd = xMovement <= (270 - (fraction * 270)) ? 0 : 270;
+      } else {
+          xEnd = xMovement <= fraction * 270 ? 0 : 270;
       }
 
-      if (!isOpen) $body.addClass(open)
+      isOpen = xEnd === 270;
+      stage.style.webkitTransition = '-webkit-transform .1s linear';
+      translate3d(xEnd);
 
-      $stage.bind('webkitTransitionEnd.coffin', transitionComplete)
+      stage.addEventListener('webkitTransitionEnd', transitionEnd);
+  }
 
-      $stage.css({
-        '-webkit-transform' : translate3d(!isOpen),
-        '-webkit-transition': '-webkit-transform .1s linear'
-      })
+  function closeCoffin () {
+      xMovement = 0;
+      touchEnd();
+  }
 
-      if (isOpen || touchstart == 'click') return
+  // todo: resize - force reset
 
-      setTimeout(function () {
+  window.addEventListener('resize', function (e) {
+      if ((windowSize = document.body.offsetWidth) > 767) stage.style.webkitTransform = ''
+  });
 
-        var xStart
-        var yStart
+  window.addEventListener('touchstart', function (e) {
+      if (windowSize > 767) return;
+      xMovement = isOpen ? 270 : 0;
+      xStart = e.touches[0].screenX;
+  });
 
-        $body
+  window.addEventListener('touchmove', function (e) {
+      if (windowSize > 767) return;
+      xMovement = e.touches[0].screenX - xStart + xEnd;
+      if (xMovement <= 270 && xMovement >= 0) {
+          translate3d(xMovement);
+      }
+  });
 
-          .bind('touchstart.coffin', function (e) {
-            xStart = e.touches[0].screenX
-            yStart = e.touches[0].screenY
-          })
+  window.addEventListener('touchend', touchEnd);
 
-          .bind('touchmove.coffin', function (e) {
-            var xMovement = Math.abs(e.touches[0].screenX - xStart)
-            var yMovement = Math.abs(e.touches[0].screenY - yStart)
-            if ((yMovement * 10) > xMovement) {
-              e.preventDefault()
-            }
-          })
+  window.addEventListener('click', function (e) {
+      closest(e.target, clickSelector) && closeCoffin();
+  });
 
-          .bind('touchend.coffin', function (e) {
+  if (isTouch) {
+    window.addEventListener('touchstart', function (e) {
+        closest(e.target, touchSelector) && closeCoffin();
+    });
+  }
 
-            if (!window.scrollX) return
-
-            var scrollX    = window.scrollX
-            var willScroll = (270 - scrollX) >= 0
-            var interval   = setInterval(function () {
-
-              if (scrollX != window.scrollX) return scrollX = window.scrollX
-
-              clearInterval(interval)
-
-              isOpen = true
-
-              if (willScroll) $stage.one('webkitTransitionEnd', transitionComplete)
-
-              $stage.css({
-                '-webkit-transform' : translate3d(),
-                '-webkit-transition': '-webkit-transform .1s linear'
-              })
-
-              if (!willScroll) transitionComplete()
-
-            }, 10)
-
-          })
-
-      }, 0)
-
-    }
-
-  })
-
-}(window.Zepto || window.jQuery)
+}();
