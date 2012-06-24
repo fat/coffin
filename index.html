@@ -15,6 +15,7 @@
   <!-- Mobile Specific Metas
   ================================================== -->
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta name="apple-mobile-web-app-capable" content="yes"/>
 
   <!-- CSS
   ================================================== -->
@@ -22,18 +23,6 @@
   <link rel="stylesheet" href="stylesheets/skeleton.css">
   <link rel="stylesheet" href="stylesheets/layout.css">
   <link rel="stylesheet" href="stylesheets/coffin.css">
-  <style>
-    /* Resize arrow for n00bz like @maccman */
-    .resize {
-      position: fixed;
-      z-index: 1000;
-      bottom: 0;
-      right: 0;
-      height: 80px;
-      width: 80px;
-      background: url(images/resize.png);
-    }
-  </style>
 
   <!--[if lt IE 9]>
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -69,56 +58,57 @@
   </div>
 
   <!-- Defines the coffin stage -->
-  <div class="stage">
-    <div class="container">
-      <div class="twelve columns content">
-        <h1 class="remove-bottom" style="margin-top: 40px">Coffin</h1>
-        <h5>Version 1.0.0-rc.1</h5>
+  <div class="page-wrap">
+    <div class="page">
+      <div class="container">
+        <div class="ten columns content">
+          <h1 class="remove-bottom" style="margin-top: 40px">Coffin</h1>
+          <h5>Version 1.0.0-rc.1</h5>
 
-        <hr>
+          <hr>
 
-        <h3 id="about">About Coffin</h3>
-        <p>Coffin is a UI component built on top of the <a href="//getskeleton.com">Skeleton framework</a>. It aims to provide a simple, collapsible left shelf. Coffin is fully responsive and automatically collapses in mobile views - allowing you to swipe away and toggle a nagivation in and out of view. It behaves similar to facebook/path's navigation UI.<p>
+          <h3 id="about">About Coffin</h3>
+          <p>Coffin is a UI component built on top of the <a href="//getskeleton.com">Skeleton framework</a>. It aims to provide a simple, collapsible left shelf. Coffin is fully responsive and automatically collapses in mobile views - allowing you to swipe away and toggle a nagivation in and out of view. It behaves similar to facebook/path's navigation UI.<p>
 
-        <h5>Versioning</h5>
-        <p>Coffin tries to adhere to semver as defined here <a href="http://semver.org/">http://semver.org/</a></p>
+          <h5>Versioning</h5>
+          <p>Coffin tries to adhere to semver as defined here <a href="http://semver.org/">http://semver.org/</a></p>
 
-        <h5>Dependencies</h5>
-        <p>Coffin was built to work on top of <a href="//zeptojs.com">zepto.js</a>, but should work with <a href="//jquery.com">jquery</a> as well if you're already using that.</p>
+          <h5>Dependencies</h5>
+          <p>Coffin was built to work on top of <a href="//zeptojs.com">zepto.js</a>, but should work with <a href="//jquery.com">jquery</a> as well if you're already using that.</p>
 
-        <hr>
+          <hr>
 
-        <h3 id="gettingStarted">Getting Started</h3>
-        <p>Using coffin is super easy. Just define a <code>.coffin</code>, a <code>.stage</code>, and an element to toggle your coffin into view (<code>data-slide="drawer"</code>).</p>
+          <h3 id="gettingStarted">Getting Started</h3>
+          <p>Using coffin is super easy. Just define a <code>.coffin</code>, a <code>.stage</code>, and an element to toggle your coffin into view (<code>data-slide="drawer"</code>).</p>
 
-        <h5>Assets</h5>
-        <p>To use coffin first make sure you include skeleton's CSS as well as a link to zepto or jquery. You'll want to have your assets loaded in a similar order as to what is shown directly below.</p>
-        <script src="https://gist.github.com/2964360.js"></script>
+          <h5>Assets</h5>
+          <p>To use coffin first make sure you include skeleton's CSS as well as a link to zepto or jquery. You'll want to have your assets loaded in a similar order as to what is shown directly below.</p>
+          <script src="https://gist.github.com/2964360.js"></script>
 
-        <h5>Markup</h5>
-        <p>There are three main things to note when marking up a page with a coffin.</p>
-        <ol>
-          <li><strong>data-coffin="touch" & data-coffin="click"</strong> - these attributes will toggle the coffin in and out of view when at a mobile size. You can place these attributes on any element, but we do provide a <strong>.coffin-tab</strong> style as a very simple ui tab which will only be shown in mobile views. The difference between touch and click is that touch will fire the toggle on touchstart (faster in mobile) and click will fire the toggle on click (useful for nav elements where you want the default click action to execute).</li>
-          <li><strong>.stage</strong> - a wrapper for the container element. Used to controll the sliding of the main content of a page. Note: Containers within a .stage class work off a 12-column grid rather than a 16-column grid, which is different than a standard skeleton implementation and done in order to make space for an open coffin.</li>
-          <li><strong>.coffin</strong> - the coffin is the side shelf. It can contain a <strong>.pillow</strong> with is a top title bar as well as a <strong>ul.nav</strong>.
-        </ol>
-        <p>A simple implementation for the above markup might look something like this:</p>
-        <script src="https://gist.github.com/2964424.js"> </script>
+          <h5>Markup</h5>
+          <p>There are three main things to note when marking up a page with a coffin.</p>
+          <ol>
+            <li><strong>data-coffin="touch" & data-coffin="click"</strong> - these attributes will toggle the coffin in and out of view when at a mobile size. You can place these attributes on any element, but we do provide a <strong>.coffin-tab</strong> style as a very simple ui tab which will only be shown in mobile views. The difference between touch and click is that touch will fire the toggle on touchstart (faster in mobile) and click will fire the toggle on click (useful for nav elements where you want the default click action to execute).</li>
+            <li><strong>.stage</strong> - a wrapper for the container element. Used to controll the sliding of the main content of a page. Note: Containers within a .stage class work off a 12-column grid rather than a 16-column grid, which is different than a standard skeleton implementation and done in order to make space for an open coffin.</li>
+            <li><strong>.coffin</strong> - the coffin is the side shelf. It can contain a <strong>.pillow</strong> with is a top title bar as well as a <strong>ul.nav</strong>.
+          </ol>
+          <p>A simple implementation for the above markup might look something like this:</p>
+          <script src="https://gist.github.com/2964424.js"> </script>
 
-        <hr>
+          <hr>
 
-        <h3 id="contributing">Contributing</h3>
-        <p>This project is hosted on github. Feel free to file an issue or open a pull request against the project <a href="//github.com/fat/coffin">here</a>.</p>
-        <p>If you are opening a bug, please provide a link to a reproducible test case - preferably in jsfiddle or jsbin. If you are submiting a pull request, please do so from a feature branch. Thanks!</p>
+          <h3 id="contributing">Contributing</h3>
+          <p>This project is hosted on github. Feel free to file an issue or open a pull request against the project <a href="//github.com/fat/coffin">here</a>.</p>
+          <p>If you are opening a bug, please provide a link to a reproducible test case - preferably in jsfiddle or jsbin. If you are submiting a pull request, please do so from a feature branch. Thanks!</p>
 
-        <hr>
+          <hr>
 
-        <p><small>Created by @<a href="http://www.twitter.com/fat">fat</a>, 2012 ©</small></p>
-      </div>
+          <p><small>Created by @<a href="http://www.twitter.com/fat">fat</a>, 2012 ©</small></p>
+        </div>
 
-    </div><!-- container -->
-  </div><!-- closet -->
-
+      </div><!-- container -->
+    </div><!-- page -->
+  </div><!-- page-wrap -->
 
   <!-- JS
   ================================================== -->

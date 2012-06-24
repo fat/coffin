@@ -16,7 +16,7 @@
   var xEnd = 0;
   var fraction = 1/3;
   var isOpen = false;
-  var stage = document.querySelector('.stage');
+  var page = document.querySelector('.page');
   var isTouch = 'ontouchstart' in document.documentElement;
   var clickSelector = '[data-coffin=click]';
   var touchSelector = '[data-coffin=touch]';
@@ -25,7 +25,7 @@
   if (isTouch) clickSelector += ', ' + touchSelector;
 
   function translate3d (i) {
-      stage.style.webkitTransform = 'translate3d(' + i + 'px,0,0)';
+      page.style.webkitTransform = 'translate3d(' + i + 'px,0,0)';
   }
 
   function closest (element, selector) {
@@ -40,8 +40,8 @@
       if (windowSize > 767) return;
 
       var transitionEnd = function () {
-          stage.style.webkitTransition = '';
-          stage.removeEventListener('webkitTransitionEnd', transitionEnd);
+          page.style.webkitTransition = '';
+          page.removeEventListener('webkitTransitionEnd', transitionEnd);
       };
 
       if (isOpen) {
@@ -51,10 +51,10 @@
       }
 
       isOpen = xEnd === 270;
-      stage.style.webkitTransition = '-webkit-transform .1s linear';
+      page.style.webkitTransition = '-webkit-transform .1s linear';
       translate3d(xEnd);
 
-      stage.addEventListener('webkitTransitionEnd', transitionEnd);
+      page.addEventListener('webkitTransitionEnd', transitionEnd);
   }
 
   function closeCoffin () {
@@ -65,7 +65,7 @@
   // todo: resize - force reset
 
   window.addEventListener('resize', function (e) {
-      if ((windowSize = document.body.offsetWidth) > 767) stage.style.webkitTransform = ''
+      if ((windowSize = document.body.offsetWidth) > 767) page.style.webkitTransform = ''
   });
 
   window.addEventListener('touchstart', function (e) {

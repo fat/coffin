@@ -21,21 +21,24 @@ body {
 }
 
 .container {
-  width: 700px;
+  width: 580px;
   margin-left: 40px;
 }
 
-.stage {
+.page-wrap {
   position: relative;
   z-index: 10;
-  width: auto;
   margin-left: 270px;
-  background: #fff;
-  border-radius: 5px;
-  box-shadow: -4px 0 10px -5px rgba(0, 0, 0, 0.8);
-  transition: all .3s linear;
   -webkit-backface-visibility: hidden;
   -webkit-perspective: 1000;
+}
+
+.page {
+  background: #fff;
+  overflow: hidden;
+  width: auto;
+  border-radius: 5px;
+  box-shadow: -4px 0 10px -5px rgba(0, 0, 0, 0.8);
 }
 
 .coffin {
@@ -46,9 +49,6 @@ body {
   width: 280px;
   margin-left: 0;
   overflow: auto;
-  background: #3b3b3b;
-  -webkit-backface-visibility: hidden;
-  -webkit-perspective: 1000;
 }
 
 .coffin .pillow {
@@ -104,7 +104,7 @@ body {
     width: 300px;
     margin: 0 auto;
   }
-  .stage {
+  .page-wrap {
     margin-left: 0;
   }
 }
