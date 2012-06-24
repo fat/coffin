@@ -26,6 +26,7 @@ body {
 }
 
 .page-wrap {
+  overflow: hidden;
   position: relative;
   z-index: 10;
   margin-left: 270px;
@@ -35,7 +36,6 @@ body {
 
 .page {
   background: #fff;
-  overflow: hidden;
   width: auto;
   border-radius: 5px;
   box-shadow: -4px 0 10px -5px rgba(0, 0, 0, 0.8);

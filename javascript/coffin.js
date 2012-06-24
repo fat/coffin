@@ -16,16 +16,20 @@
   var xEnd = 0;
   var fraction = 1/3;
   var isOpen = false;
+  var pagewrap = document.querySelector('.page-wrap');
   var page = document.querySelector('.page');
   var isTouch = 'ontouchstart' in document.documentElement;
   var clickSelector = '[data-coffin=click]';
   var touchSelector = '[data-coffin=touch]';
   var windowSize = document.body.offsetWidth;
 
+  page.style.width = windowSize + 'px';
+
   if (isTouch) clickSelector += ', ' + touchSelector;
 
   function translate3d (i) {
-      page.style.webkitTransform = 'translate3d(' + i + 'px,0,0)';
+      pagewrap.style.webkitTransform = 'translate3d(' + i + 'px,0,0)';
+      pagewrap.style.width = (windowSize - i) + 'px';
   }
 
   function closest (element, selector) {
@@ -40,8 +44,8 @@
       if (windowSize > 767) return;
 
       var transitionEnd = function () {
-          page.style.webkitTransition = '';
-          page.removeEventListener('webkitTransitionEnd', transitionEnd);
+          pagewrap.style.webkitTransition = '';
+          pagewrap.removeEventListener('webkitTransitionEnd', transitionEnd);
       };
 
       if (isOpen) {
@@ -51,10 +55,10 @@
       }
 
       isOpen = xEnd === 270;
-      page.style.webkitTransition = '-webkit-transform .1s linear';
+      pagewrap.style.webkitTransition = '-webkit-transform .1s linear, width .1s linear';
       translate3d(xEnd);
 
-      page.addEventListener('webkitTransitionEnd', transitionEnd);
+      pagewrap.addEventListener('webkitTransitionEnd', transitionEnd);
   }
 
   function closeCoffin () {
@@ -62,10 +66,11 @@
       touchEnd();
   }
 
-  // todo: resize - force reset
-
   window.addEventListener('resize', function (e) {
-      if ((windowSize = document.body.offsetWidth) > 767) page.style.webkitTransform = ''
+      if ((windowSize = document.body.offsetWidth) > 767) {
+          pagewrap.style.webkitTransform = '';
+          page.style.width = windowSize + 'px';
+      }
   });
 
   window.addEventListener('touchstart', function (e) {
