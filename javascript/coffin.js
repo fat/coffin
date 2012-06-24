@@ -5,11 +5,7 @@
  * http://www.opensource.org/licenses/mit-license.php
  */
 
-!function ($) {
-
-  /*
-   * coffin toggle for mobile
-   */
+!function () {
 
   // start of X scroll pos
   var xStart;
