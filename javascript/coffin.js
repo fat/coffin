@@ -107,7 +107,7 @@
     window.addEventListener('touchstart', function (e) {
 
         // don't allow scrolling the page up and down when nav open
-        if (isOpen && !closest(e.target, '.coffin')) e.preventDefault();
+        if (isOpen) e.preventDefault();
 
         // if window isn't mobile, than exit
         if (windowSize > 767) return;
@@ -131,7 +131,7 @@
     window.addEventListener('touchmove', function (e) {
 
         // don't allow scrolling the page up and down when nav open
-        if (direction == 'vertical' && isOpen && !closest(e.target, '.coffin')) e.preventDefault();
+        if (direction == 'vertical' && isOpen) e.preventDefault();
 
         // if window isn't mobile, than exit
         if (windowSize > 767 || direction == 'vertical') return;
