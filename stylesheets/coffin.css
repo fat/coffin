@@ -15,10 +15,6 @@
 /*  #Core (Coffin)
 ================================================== */
 
-html,
-body {
-  overflow: hidden !important;
-}
 
 body {
   background: #3b3b3b;
@@ -100,10 +96,16 @@ body {
 /* Note: Design for a width of 320px */
 
 @media only screen and (max-width: 767px) {
+  html,
+  body {
+    overflow: hidden;
+  }
+
   .container {
     width: 300px;
     margin: 0 auto;
   }
+
   .page {
     margin-left: 0;
   }

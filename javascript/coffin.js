@@ -14,7 +14,7 @@
   var xStart;
   var xMovement = 0;
   var xEnd = 0;
-  var fraction = 1/3;
+  var fraction = 1/5;
   var isOpen = false;
   var page = document.querySelector('.page');
   var isTouch = 'ontouchstart' in document.documentElement;
