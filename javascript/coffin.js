@@ -134,12 +134,18 @@
       // if window isn't mobile, than exit
       if (windowSize > 767 || direction == 'vertical') return;
 
+      // calculate offsets to see if scroll direciton is vertical or horizontal
       var xOffset = Math.abs(e.touches[0].screenX - xStart);
       var yOffset = Math.abs(e.touches[0].screenY - yStart);
 
+      // set direction based on offsets
       if (yOffset > xOffset) return direction = 'vertical';
 
+      // if not vertical, than horizontal :P
       direction = 'horizontal';
+
+      // prevent scrolls if horizontal
+      e.preventDefault();
 
       // calcuate movement based on last scroll pos
       xMovement = e.touches[0].screenX - xStart + xEnd;
