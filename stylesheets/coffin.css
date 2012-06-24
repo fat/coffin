@@ -5,64 +5,160 @@
  * http://www.opensource.org/licenses/mit-license.php
  */
 
-
- /* Table of Contents
+/* Table of Contents
 ==================================================
     #Core   (Coffin)
     #Tablet (Portrait)
     #Mobile (Portrait)
     #Mobile (Landscape) */
 
-
 /*  #Core (Coffin)
 ================================================== */
 
-    body                                { background: #fff; overflow-x: hidden; }
+body {
+  overflow-x: hidden;
+  background: #fff;
+}
 
-    .container                          { margin-left: 40px; width: 700px; }
-    .stage                              { border-radius: 5px; margin-left: 210px; width: auto; transition: all .3s linear; -webkit-perspective: 1000; -webkit-backface-visibility: hidden; position: relative; z-index: 10; background: #fff; box-shadow: -4px 0px 10px -5px rgba(0,0,0,.8); }
+.container {
+  width: 700px;
+  margin-left: 40px;
+}
 
-    .coffin                             { width: 220px; background: #3b3b3b; overflow: auto; margin-left: 0; position: fixed; top: 0; bottom: 0; left: 0; -webkit-perspective: 1000; -webkit-backface-visibility: hidden; }
-    .coffin .pillow                     { background: #222; color: #CCC; padding-left: 15px; font-weight: bold; border-bottom: 1px solid black; font-size: 11px; line-height: 22px;}
-    .coffin .nav li                     { margin-bottom: 0; }
-    .coffin .nav li a                   { display: block; text-decoration: none; padding-left: 15px; line-height: 30px; color: #fff; font-weight: bold; text-shadow: 0 -1px rgba(0,0,0,.8); border-bottom: 1px solid #333; box-shadow: 0 1px 1px rgba(255, 255, 255, .1); }
-    .coffin .nav li a:hover,
-    .coffin .nav li a.active            { background: rgba(0,0,0,.1); }
+.stage {
+  position: relative;
+  z-index: 10;
+  width: auto;
+  margin-left: 210px;
+  background: #fff;
+  border-radius: 5px;
+  box-shadow: -4px 0 10px -5px rgba(0, 0, 0, 0.8);
+  transition: all .3s linear;
+  -webkit-backface-visibility: hidden;
+  -webkit-perspective: 1000;
+}
 
-    .coffin-tab                         { display: none; position: fixed; top: 0; right: 10px; z-index: 100; color: #fff; text-decoration: none; background: #000; padding: 6px 8px; border-radius: 0 0 5px 5px; }
-    .coffin-tab:hover .coffin-icon-bar  { background-color: rgba(255,255,255,.8); }
-    .coffin-icon-bar                    { display: block; width: 18px; height: 2px; background-color: rgba(255, 255, 255, .6); -webkit-border-radius: 1px; -moz-border-radius: 1px; border-radius: 1px; -webkit-box-shadow: 0 1px 0 rgba(0, 0, 0, 0.25); -moz-box-shadow: 0 1px 0 rgba(0, 0, 0, 0.25); box-shadow: 0 1px 0 rgba(0, 0, 0, 0.25); margin-top: 3px; }
-    .coffin-icon-bar:first-child        { margin-top: 0;}
+.coffin {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 220px;
+  margin-left: 0;
+  overflow: auto;
+  background: #3b3b3b;
+  -webkit-backface-visibility: hidden;
+  -webkit-perspective: 1000;
+}
 
+.coffin .pillow {
+  padding-left: 15px;
+  font-size: 11px;
+  font-weight: bold;
+  line-height: 22px;
+  color: #CCC;
+  background: #222;
+  border-bottom: 1px solid black;
+}
+
+.coffin .nav li {
+  margin-bottom: 0;
+}
+
+.coffin .nav li a {
+  display: block;
+  padding-left: 15px;
+  font-weight: bold;
+  line-height: 30px;
+  color: #fff;
+  text-decoration: none;
+  text-shadow: 0 -1px rgba(0, 0, 0, 0.8);
+  border-bottom: 1px solid #333;
+  box-shadow: 0 1px 1px rgba(255, 255, 255, 0.1);
+}
+
+.coffin .nav li a:hover,
+.coffin .nav li a.active {
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.coffin-tab {
+  position: fixed;
+  top: 0;
+  right: 10px;
+  z-index: 100;
+  display: none;
+  padding: 6px 8px;
+  color: #fff;
+  text-decoration: none;
+  background: #000;
+  border-radius: 0 0 5px 5px;
+}
+
+.coffin-tab:hover .coffin-icon-bar {
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
+.coffin-icon-bar {
+  display: block;
+  width: 18px;
+  height: 2px;
+  margin-top: 3px;
+  background-color: rgba(255, 255, 255, 0.6);
+  -webkit-border-radius: 1px;
+     -moz-border-radius: 1px;
+          border-radius: 1px;
+  -webkit-box-shadow: 0 1px 0 rgba(0, 0, 0, 0.25);
+     -moz-box-shadow: 0 1px 0 rgba(0, 0, 0, 0.25);
+          box-shadow: 0 1px 0 rgba(0, 0, 0, 0.25);
+}
+
+.coffin-icon-bar:first-child {
+  margin-top: 0;
+}
 
 /* #Tablet (Portrait)
 ================================================== */
 
-    /* Note: Design for a width of 768px */
+/* Note: Design for a width of 768px */
 
-    @media only screen and (min-width: 768px) and (max-width: 959px) {
-      .container  { width: 556px; }
-    }
+@media only screen and (min-width: 768px) and (max-width: 959px) {
+  .container {
+    width: 556px;
+  }
+}
 
 /*  #Mobile (Portrait)
 ================================================== */
 
-    /* Note: Design for a width of 320px */
+/* Note: Design for a width of 320px */
 
-    @media only screen and (max-width: 767px) {
-      .coffin                 { display: none; }
-      .coffin-tab             { display: block; }
-      .coffin-open .coffin    { display: inherit; }
-      .container              { margin: 0 auto; width: 300px;}
-      .stage                  { margin-left: 0; }
-    }
-
+@media only screen and (max-width: 767px) {
+  .coffin {
+    display: none;
+  }
+  .coffin-tab {
+    display: block;
+  }
+  .coffin-open .coffin {
+    display: inherit;
+  }
+  .container {
+    width: 300px;
+    margin: 0 auto;
+  }
+  .stage {
+    margin-left: 0;
+  }
+}
 
 /* #Mobile (Landscape)
 ================================================== */
 
-    /* Note: Design for a width of 480px */
+/* Note: Design for a width of 480px */
 
-    @media only screen and (min-width: 480px) and (max-width: 767px) {
-      .container { width: 420px;}
-    }
+@media only screen and (min-width: 480px) and (max-width: 767px) {
+  .container {
+    width: 420px;
+  }
+}
