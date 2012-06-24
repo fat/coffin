@@ -60,7 +60,7 @@
   function closest (element, selector) {
     while (element && !element.webkitMatchesSelector(selector)) {
         element = element.parentNode;
-        if (!element.webkitMatchesSelector) return false;
+        if (!element.webkitMatchesSelector) return;
     }
     return element;
   }
