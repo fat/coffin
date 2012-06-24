@@ -106,14 +106,6 @@
     // handle touch start event
     window.addEventListener('touchstart', function (e) {
 
-        // don't allow scrolling the page up and down when nav open
-        if (isOpen) {
-          e.preventDefault();
-          var evt = document.createEvent('Event');
-          evt.initMouseEvent('click', true, true, document.defaultView, 1, 0, 0, 0, 0, false, false, false, false, 0, null);
-          e.target.dispatchEvent(evt);
-        }
-
         // if window isn't mobile, than exit
         if (windowSize > 767) return;
 
