@@ -29,7 +29,7 @@ body {
   position: relative;
   z-index: 10;
   width: auto;
-  margin-left: 210px;
+  margin-left: 270px;
   background: #fff;
   border-radius: 5px;
   box-shadow: -4px 0 10px -5px rgba(0, 0, 0, 0.8);
@@ -43,7 +43,7 @@ body {
   top: 0;
   bottom: 0;
   left: 0;
-  width: 220px;
+  width: 280px;
   margin-left: 0;
   overflow: auto;
   background: #3b3b3b;
@@ -52,10 +52,10 @@ body {
 }
 
 .coffin .pillow {
-  padding-left: 15px;
-  font-size: 11px;
+  padding-left: 25px;
+  font-size: 13px;
   font-weight: bold;
-  line-height: 22px;
+  line-height: 30px;
   color: #CCC;
   background: #222;
   border-bottom: 1px solid black;
@@ -67,9 +67,10 @@ body {
 
 .coffin .nav li a {
   display: block;
-  padding-left: 15px;
+  padding-left: 25px;
   font-weight: bold;
-  line-height: 30px;
+  font-size: 15px;
+  line-height: 50px;
   color: #fff;
   text-decoration: none;
   text-shadow: 0 -1px rgba(0, 0, 0, 0.8);
