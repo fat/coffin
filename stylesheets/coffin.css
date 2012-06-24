@@ -15,8 +15,12 @@
 /*  #Core (Coffin)
 ================================================== */
 
+html,
 body {
-  overflow: hidden;
+  overflow-x: hidden;
+}
+
+body {
   background: #3b3b3b;
 }
 
