@@ -62,7 +62,7 @@
     <div class="container">
       <div class="ten columns content">
         <h1 class="remove-bottom" style="margin-top: 40px">Coffin</h1>
-        <h5>Version 1.0.0-rc.1</h5>
+        <h5>Version 1.0.0-rc.2</h5>
 
         <hr>
 
@@ -73,23 +73,26 @@
         <p>Coffin tries to adhere to semver as defined here <a href="http://semver.org/">http://semver.org/</a></p>
 
         <h5>Dependencies</h5>
-        <p>Coffin was built to work on top of <a href="//zeptojs.com">zepto.js</a>, but should work with <a href="//jquery.com">jquery</a> as well if you're already using that.</p>
+        <p>Coffin's only dependency is skeleton. It has no js dependencies.</p>
+
+        <h5>Browser Support</h5>
+        <p>Currently only tested in Chrome and Safari on my iphone. Planning on adding more browsers as this tightens up though.</p>
 
         <hr>
 
         <h3 id="gettingStarted">Getting Started</h3>
-        <p>Using coffin is super easy. Just define a <code>.coffin</code>, a <code>.stage</code>, and an element to toggle your coffin into view (<code>data-slide="drawer"</code>).</p>
+        <p>Using coffin is super easy. Just define a <strong>.coffin</strong> and a <strong>.page</strong>. A coffin is a collapsible drawer (you may have seen it implemented in facebook or path's iphone application). A page is a wrapper for your container. It's what slides over the top of your coffin.</p>
 
         <h5>Assets</h5>
-        <p>To use coffin first make sure you include skeleton's CSS as well as a link to zepto or jquery. You'll want to have your assets loaded in a similar order as to what is shown directly below.</p>
+        <p>To use coffin make sure you include skeleton's CSS. You'll want to have your assets loaded in a similar order as to what is shown directly below. You should include coffin.js at the bottom of your page, not in the head!</p>
         <script src="https://gist.github.com/2964360.js"></script>
 
         <h5>Markup</h5>
         <p>There are three main things to note when marking up a page with a coffin.</p>
         <ol>
-          <li><strong>data-coffin="touch" & data-coffin="click"</strong> - these attributes will toggle the coffin in and out of view when at a mobile size. You can place these attributes on any element, but we do provide a <strong>.coffin-tab</strong> style as a very simple ui tab which will only be shown in mobile views. The difference between touch and click is that touch will fire the toggle on touchstart (faster in mobile) and click will fire the toggle on click (useful for nav elements where you want the default click action to execute).</li>
-          <li><strong>.stage</strong> - a wrapper for the container element. Used to controll the sliding of the main content of a page. Note: Containers within a .stage class work off a 12-column grid rather than a 16-column grid, which is different than a standard skeleton implementation and done in order to make space for an open coffin.</li>
-          <li><strong>.coffin</strong> - the coffin is the side shelf. It can contain a <strong>.pillow</strong> with is a top title bar as well as a <strong>ul.nav</strong>.
+          <li><strong>data-coffin="touch" & data-coffin="click"</strong> - these attributes will toggle the coffin in and out of view when at a mobile size. You can place these attributes on any element. The difference between touch and click is that touch will fire the toggle on touchstart (faster in mobile) and click will fire the toggle on click (useful for nav elements where you want the default click action to execute).</li>
+          <li><strong>.page</strong> - a wrapper for the container element. Used to controll the sliding of the main content of a page. Note: Containers within a <strong>.page</strong> class work off a 10-column grid rather than a 16-column grid, which is different than a standard skeleton implementation and done in order to make space for an open coffin.</li>
+          <li><strong>.coffin</strong> - the coffin is the side shelf. It can contain <strong>.pillow</strong> elements which are sectioning bars, as well as a <strong>ul.nav</strong> elements.
         </ol>
         <p>A simple implementation for the above markup might look something like this:</p>
         <script src="https://gist.github.com/2964424.js"> </script>
