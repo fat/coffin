@@ -136,7 +136,7 @@
       var xOffset = Math.abs(e.touches[0].screenX - xStart);
       var yOffset = Math.abs(e.touches[0].screenY - yStart);
 
-      if (y > x) return direction = 'vertical';
+      if (yOffset > xOffset) return direction = 'vertical';
 
       direction = 'horizontal';
 
