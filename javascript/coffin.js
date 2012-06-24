@@ -55,6 +55,7 @@
 
   // simple helper to force coffin close
   function closeCoffin () {
+      if (windowSize > 767) return;
       xMovement = 0;
       touchEnd();
   }
