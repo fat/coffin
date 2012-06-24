@@ -13,10 +13,9 @@
 
   $(function () {
 
-    var open   = 'coffin-open'
-
-    var $body  = $('body')
-    var $stage = $('.stage')
+    var open       = 'coffin-open'
+    var $body      = $('body')
+    var $stage     = $('.stage')
     var touchstart = 'ontouchstart' in document.documentElement ? 'touchstart' : 'click'
 
     $body
@@ -25,7 +24,7 @@
       .delegate('[data-coffin="touch"]', touchstart, toggleCoffin)
 
     function translate3d (open) {
-      return 'translate3d(' + (open  ? '210px' : '-' + (210 - window.scrollX) + 'px') + ',0,0)'
+      return 'translate3d(' + (open  ? '210' : -1 * Math.max(210 - window.scrollX, 210)) + 'px,0,0)'
     }
 
     function toggleCoffin() {
@@ -37,12 +36,19 @@
         if (isOpen) $body.removeClass(open)
 
         $stage.css({
-          '-webkit-transform': '',
-          '-webkit-transition': '',
+          '-webkit-transform'   : '',
+          '-webkit-transition'  : '',
           'left': !isOpen ? 210 : ''
         })
 
         $stage.unbind('webkitTransitionEnd.coffin')
+
+        if (isOpen) {
+          $body
+            .unbind('touchstart.coffin')
+            .unbind('touchmove.coffin')
+            .unbind('touchend.coffin')
+        }
 
       }
 
@@ -51,7 +57,7 @@
       $stage.bind('webkitTransitionEnd.coffin', transitionComplete)
 
       $stage.css({
-        '-webkit-transform': translate3d(!isOpen),
+        '-webkit-transform' : translate3d(!isOpen),
         '-webkit-transition': '-webkit-transform .1s linear'
       })
 
@@ -59,26 +65,50 @@
 
       setTimeout(function () {
 
-        $body.bind('touchend.coffin', function (e) {
+        var xStart
+        var yStart
 
-          if (!window.scrollX) return
+        $body
 
-          var willScroll = (210 - window.scrollX) >= 0
-
-          isOpen = true
-
-          if (willScroll) $stage.one('webkitTransitionEnd', transitionComplete)
-
-          $stage.css({
-            '-webkit-transform': translate3d(),
-            '-webkit-transition': '-webkit-transform .1s linear'
+          .bind('touchstart.coffin', function (e) {
+            xStart = e.touches[0].screenX
+            yStart = e.touches[0].screenY
           })
 
-          if (!willScroll) transitionComplete()
+          .bind('touchmove.coffin', function (e) {
+            var xMovement = Math.abs(e.touches[0].screenX - xStart)
+            var yMovement = Math.abs(e.touches[0].screenY - yStart)
+            if ((yMovement * 10) > xMovement) {
+              e.preventDefault()
+            }
+          })
 
-          $body.unbind('touchend.coffin')
+          .bind('touchend.coffin', function (e) {
 
-        })
+            if (!window.scrollX) return
+
+            var scrollX    = window.scrollX
+            var willScroll = (210 - scrollX) >= 0
+            var interval   = setInterval(function () {
+
+              if (scrollX != window.scrollX) return scrollX = window.scrollX
+
+              clearInterval(interval)
+
+              isOpen = true
+
+              if (willScroll) $stage.one('webkitTransitionEnd', transitionComplete)
+
+              $stage.css({
+                '-webkit-transform' : translate3d(),
+                '-webkit-transition': '-webkit-transform .1s linear'
+              })
+
+              if (!willScroll) transitionComplete()
+
+            }, 10)
+
+          })
 
       }, 0)
 
