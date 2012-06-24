@@ -16,24 +16,22 @@
 ================================================== */
 
 body {
-  overflow-x: hidden;
-  background: #fff;
+  background: #3b3b3b;
 }
 
 .container {
-  width: 700px;
+  width: 580px;
   margin-left: 40px;
 }
 
-.stage {
+.page {
   position: relative;
   z-index: 10;
-  width: auto;
-  margin-left: 210px;
+  margin-left: 270px;
   background: #fff;
+  width: auto;
   border-radius: 5px;
   box-shadow: -4px 0 10px -5px rgba(0, 0, 0, 0.8);
-  transition: all .3s linear;
   -webkit-backface-visibility: hidden;
   -webkit-perspective: 1000;
 }
@@ -43,19 +41,16 @@ body {
   top: 0;
   bottom: 0;
   left: 0;
-  width: 220px;
+  width: 280px;
   margin-left: 0;
   overflow: auto;
-  background: #3b3b3b;
-  -webkit-backface-visibility: hidden;
-  -webkit-perspective: 1000;
 }
 
 .coffin .pillow {
-  padding-left: 15px;
-  font-size: 11px;
+  padding-left: 25px;
+  font-size: 13px;
   font-weight: bold;
-  line-height: 22px;
+  line-height: 30px;
   color: #CCC;
   background: #222;
   border-bottom: 1px solid black;
@@ -67,9 +62,10 @@ body {
 
 .coffin .nav li a {
   display: block;
-  padding-left: 15px;
+  padding-left: 25px;
   font-weight: bold;
-  line-height: 30px;
+  font-size: 15px;
+  line-height: 50px;
   color: #fff;
   text-decoration: none;
   text-shadow: 0 -1px rgba(0, 0, 0, 0.8);
@@ -80,41 +76,6 @@ body {
 .coffin .nav li a:hover,
 .coffin .nav li a.active {
   background: rgba(0, 0, 0, 0.1);
-}
-
-.coffin-tab {
-  position: fixed;
-  top: 0;
-  right: 10px;
-  z-index: 100;
-  display: none;
-  padding: 6px 8px;
-  color: #fff;
-  text-decoration: none;
-  background: #000;
-  border-radius: 0 0 5px 5px;
-}
-
-.coffin-tab:hover .coffin-icon-bar {
-  background-color: rgba(255, 255, 255, 0.8);
-}
-
-.coffin-icon-bar {
-  display: block;
-  width: 18px;
-  height: 2px;
-  margin-top: 3px;
-  background-color: rgba(255, 255, 255, 0.6);
-  -webkit-border-radius: 1px;
-     -moz-border-radius: 1px;
-          border-radius: 1px;
-  -webkit-box-shadow: 0 1px 0 rgba(0, 0, 0, 0.25);
-     -moz-box-shadow: 0 1px 0 rgba(0, 0, 0, 0.25);
-          box-shadow: 0 1px 0 rgba(0, 0, 0, 0.25);
-}
-
-.coffin-icon-bar:first-child {
-  margin-top: 0;
 }
 
 /* #Tablet (Portrait)
@@ -134,20 +95,17 @@ body {
 /* Note: Design for a width of 320px */
 
 @media only screen and (max-width: 767px) {
-  .coffin {
-    display: none;
+  html,
+  body {
+    overflow: hidden;
   }
-  .coffin-tab {
-    display: block;
-  }
-  .coffin-open .coffin {
-    display: inherit;
-  }
+
   .container {
     width: 300px;
     margin: 0 auto;
   }
-  .stage {
+
+  .page {
     margin-left: 0;
   }
 }
