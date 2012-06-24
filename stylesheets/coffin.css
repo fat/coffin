@@ -16,7 +16,7 @@
 ================================================== */
 
 body {
-  overflow-x: hidden;
+  overflow: hidden;
   background: #3b3b3b;
 }
 
@@ -25,20 +25,16 @@ body {
   margin-left: 40px;
 }
 
-.page-wrap {
-  overflow: hidden;
+.page {
   position: relative;
   z-index: 10;
   margin-left: 270px;
-  -webkit-backface-visibility: hidden;
-  -webkit-perspective: 1000;
-}
-
-.page {
   background: #fff;
   width: auto;
   border-radius: 5px;
   box-shadow: -4px 0 10px -5px rgba(0, 0, 0, 0.8);
+  -webkit-backface-visibility: hidden;
+  -webkit-perspective: 1000;
 }
 
 .coffin {
@@ -104,7 +100,7 @@ body {
     width: 300px;
     margin: 0 auto;
   }
-  .page-wrap {
+  .page {
     margin-left: 0;
   }
 }
