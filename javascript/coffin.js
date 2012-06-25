@@ -31,6 +31,9 @@
     // page element
     var page = document.querySelector('.page');
 
+    // coffin element
+    var coffin = document.querySelector('.coffin');
+
     // is this a touch device
     var isTouch = 'ontouchstart' in document.documentElement;
 
@@ -69,12 +72,20 @@
     function touchEnd () {
 
         // if window isn't mobile, than exit
-        if (windowSize > 767) return;
+        if (windowSize > 767 || direction == 'vertical') return;
 
-        // remove transition and handler on transitionEnd
         var transitionEnd = function () {
+
+            // remove transition and handler on transitionEnd
+            if (!isOpen) page.style.webkitTransform = '';
             page.style.webkitTransition = '';
             page.removeEventListener('webkitTransitionEnd', transitionEnd);
+
+            // remove the pulling
+            coffin.classList.remove('coffin-pulling');
+
+            // toggle the coffin open class
+            coffin.classList[isOpen ? 'add' : 'remove']('coffin-open');
         };
 
         // calculate which side to transition to
@@ -82,6 +93,9 @@
 
         // check if transitioned open
         isOpen = xEnd === 270;
+
+        // if horizontal scroll is at 0, exit early
+        if (!xMovement) return
 
         // set transition property for animation
         page.style.webkitTransition = '-webkit-transform .1s linear';
@@ -91,6 +105,9 @@
 
         // listen for transition complete
         page.addEventListener('webkitTransitionEnd', transitionEnd);
+
+        // if exit is at edge, force transitionEnd because transition won't be fired anyways
+        if (xMovement == 270) transitionEnd();
 
     }
 
@@ -139,6 +156,9 @@
 
         // set direction based on offsets
         if (yOffset > xOffset) return direction = 'vertical';
+
+        // the first time a horizontal move, set the pulling class
+        if (direction != 'horizontal') coffin.classList.add('coffin-pulling');
 
         // if not vertical, than horizontal :P
         direction = 'horizontal';

@@ -38,6 +38,8 @@ body {
 }
 
 .coffin {
+  z-index: 5;
+  background: #3b3b3b;
   position: fixed;
   top: 0;
   bottom: 0;
@@ -99,6 +101,15 @@ body {
   html,
   body {
     overflow: hidden;
+  }
+
+  .coffin {
+    display: none;
+  }
+
+  .coffin-open,
+  .coffin-pulling {
+    display: block;
   }
 
   .container {
