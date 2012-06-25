@@ -71,6 +71,8 @@
     // handle touch end
     function touchEnd () {
 
+        //debugger
+
         // if window isn't mobile, than exit
         if (windowSize > 767 || direction == 'vertical') return;
 
@@ -93,9 +95,6 @@
 
         // check if transitioned open
         isOpen = xEnd === 270;
-
-        // if horizontal scroll is at 0, exit early
-        if (!xMovement) return
 
         // set transition property for animation
         page.style.webkitTransition = '-webkit-transform .1s linear';
