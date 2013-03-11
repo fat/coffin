@@ -50,9 +50,9 @@
     }
 
     // simple helper to force coffin close
-    function closeCoffin () {
+    function toggleCoffin () {
         if (windowSize > 767) return;
-        xMovement = 0;
+        xMovement = (isOpen) ? 0: 100;
         touchEnd();
     }
 
@@ -161,7 +161,7 @@
 
     // listen to click events on declartive markup
     window.addEventListener('click', function (e) {
-        closest(e.target, clickSelector) && closeCoffin();
+        closest(e.target, clickSelector) && toggleCoffin();
     });
 
     // if not touch exit early
@@ -169,7 +169,7 @@
 
     // listen to touch start events on declartive markup
     window.addEventListener('touchstart', function (e) {
-        closest(e.target, touchSelector) && closeCoffin();
+        closest(e.target, touchSelector) && toggleCoffin();
     });
 
 }();
