@@ -15,20 +15,14 @@
 /*  #Core (Coffin)
 ================================================== */
 
-
+html,
 body {
-  background: #3b3b3b;
+  overflow-x: hidden;
+  background: #222;
 }
-
-.container {
-  width: 580px;
-  margin-left: 40px;
-}
-
 .page {
   position: relative;
   z-index: 10;
-  margin-left: 270px;
   background: #fff;
   width: auto;
   border-radius: 5px;
@@ -36,10 +30,10 @@ body {
   -webkit-backface-visibility: hidden;
   -webkit-perspective: 1000;
 }
-
 .coffin {
+  display: none;
   z-index: 5;
-  background: #3b3b3b;
+  background: #222;
   position: fixed;
   top: 0;
   bottom: 0;
@@ -48,21 +42,22 @@ body {
   margin-left: 0;
   overflow: auto;
 }
-
+.coffin-open,
+.coffin-pulling {
+  display: block;
+}
 .coffin .pillow {
   padding-left: 25px;
   font-size: 13px;
   font-weight: bold;
   line-height: 30px;
   color: #CCC;
-  background: #222;
+  background: #111;
   border-bottom: 1px solid black;
 }
-
 .coffin .nav li {
   margin-bottom: 0;
 }
-
 .coffin .nav li a {
   display: block;
   padding-left: 25px;
@@ -72,13 +67,28 @@ body {
   color: #fff;
   text-decoration: none;
   text-shadow: 0 -1px rgba(0, 0, 0, 0.8);
-  border-bottom: 1px solid #333;
-  box-shadow: 0 1px 1px rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid #111;
+  box-shadow: 0 1px 1px #333;
 }
-
 .coffin .nav li a:hover,
 .coffin .nav li a.active {
   background: rgba(0, 0, 0, 0.1);
+}
+.coffin-remote:hover,
+.coffin-remote {
+  position: absolute;
+  left: 5px;
+  top: 5px;
+  border: 0;
+  padding: 7px 10px;
+  background: rgba(255,255,255,.4);
+}
+.coffin-remote-bar {
+  display: block;
+  width: 18px;
+  height: 1px;
+  margin-top: 4px;
+  background-color: #fff;
 }
 
 /* #Tablet (Portrait)
@@ -86,7 +96,7 @@ body {
 
 /* Note: Design for a width of 768px */
 
-@media only screen and (min-width: 768px) and (max-width: 959px) {
+@media only screen and (max-width: 959px) {
   .container {
     width: 556px;
   }
@@ -98,27 +108,9 @@ body {
 /* Note: Design for a width of 320px */
 
 @media only screen and (max-width: 767px) {
-  html,
-  body {
-    overflow: hidden;
-  }
-
-  .coffin {
-    display: none;
-  }
-
-  .coffin-open,
-  .coffin-pulling {
-    display: block;
-  }
-
   .container {
     width: 300px;
     margin: 0 auto;
-  }
-
-  .page {
-    margin-left: 0;
   }
 }
 

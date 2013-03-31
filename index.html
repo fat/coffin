@@ -17,12 +17,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <meta name="apple-mobile-web-app-capable" content="yes"/>
 
-  <!-- CSS
+  <!-- LIBRARY CSS
   ================================================== -->
   <link rel="stylesheet" href="stylesheets/base.css">
   <link rel="stylesheet" href="stylesheets/skeleton.css">
-  <link rel="stylesheet" href="stylesheets/layout.css">
   <link rel="stylesheet" href="stylesheets/coffin.css">
+
+  <!-- DOC CSS
+  ================================================== -->
+  <link rel="stylesheet" href="stylesheets/docs.css">
 
   <!--[if lt IE 9]>
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -39,32 +42,37 @@
 
 <body>
 
-
   <!-- Primary Page Layout
   ================================================== -->
 
-  <div class="resize"></div>
-
   <!-- Defines the simple coffin drawer -->
   <div class="coffin">
-    <div class="pillow">coffin</div>
+    <div class="pillow">Coffin</div>
     <ul class="nav">
-      <li><a data-coffin="click" href="#about">About Coffin</a></li>
-      <li><a data-coffin="click" href="#gettingStarted">Getting Started</a></li>
-      <li><a data-coffin="click" href="#contributing">Contributing</a></li>
+      <li><a data-coffin="toggle" href="#about">About Coffin</a></li>
+      <li><a data-coffin="toggle" href="#gettingStarted">Getting Started</a></li>
+      <li><a data-coffin="toggle" href="#contributing">Contributing</a></li>
       <li><a href="//github.com/fat">@fat</a></li>
     </ul>
   </div>
 
   <!-- Defines the coffin stage -->
   <div class="page">
+
+    <!-- Define the hero unit -->
+    <div class="hero">
+      <h1 class="hero-title">C O F F I N<small>BY <a href="//twitter.com/fat">@FAT</a></small></h1>
+    </div>
+
+    <!-- Defines an optional coffin toggle -->
+    <button type="button" class="coffin-remote" data-coffin="toggle">
+      <span class="coffin-remote-bar"></span>
+      <span class="coffin-remote-bar"></span>
+      <span class="coffin-remote-bar"></span>
+    </button>
+
     <div class="container">
-      <div class="ten columns content">
-        <h1 class="remove-bottom" style="margin-top: 40px">Coffin</h1>
-        <h5>Version 1.0.0-rc.2</h5>
-
-        <hr>
-
+      <div class="sixteen columns content">
         <h3 id="about">About Coffin</h3>
         <p>Coffin is a UI component built on top of the <a href="//getskeleton.com">Skeleton framework</a>. It aims to provide a simple, collapsible left shelf. Coffin is fully responsive and automatically collapses in mobile views - allowing you to swipe away and toggle a nagivation in and out of view. It behaves similar to facebook/path's navigation UI.<p>
 
@@ -75,7 +83,7 @@
         <p>Coffin's only dependency is skeleton. It has no js dependencies.</p>
 
         <h5>Browser Support</h5>
-        <p>Currently only tested in Chrome and Safari on my iphone. Planning on adding more browsers as this tightens up though.</p>
+        <p>Coffin is tested in and supports: Chrome, Safari, Firefox, IE on IOS, Android, and Desktop where available.</p>
 
         <hr>
 
@@ -89,8 +97,8 @@
         <h5>Markup</h5>
         <p>There are three main things to note when marking up a page with a coffin.</p>
         <ol>
-          <li><strong>data-coffin="touch" & data-coffin="click"</strong> - these attributes will toggle the coffin in and out of view when at a mobile size. You can place these attributes on any element. The difference between touch and click is that touch will fire the toggle on touchstart (faster in mobile) and click will fire the toggle on click (useful for nav elements where you want the default click action to execute).</li>
-          <li><strong>.page</strong> - a wrapper for the container element. Used to controll the sliding of the main content of a page. Note: Containers within a <strong>.page</strong> class work off a 10-column grid rather than a 16-column grid, which is different than a standard skeleton implementation and done in order to make space for an open coffin.</li>
+          <li><strong>data-coffin="toggle"</strong> - this attribute will toggle the coffin in and out of view. You can place these attributes on any element.</li>
+          <li><strong>.page</strong> - a wrapper for the container element. Used to controll the sliding of the main content of a page.</li>
           <li><strong>.coffin</strong> - the coffin is the side shelf. It can contain <strong>.pillow</strong> elements which are sectioning bars, as well as a <strong>ul.nav</strong> elements.
         </ol>
         <p>A simple implementation for the above markup might look something like this:</p>
@@ -104,7 +112,7 @@
 
         <hr>
 
-        <p><small>Created by @<a href="http://www.twitter.com/fat">fat</a>, 2012 ©</small></p>
+        <p><small>Created by @<a href="http://www.twitter.com/fat">fat</a>, 2013 ©</small></p>
       </div>
 
     </div><!-- container -->
@@ -113,6 +121,11 @@
   <!-- JS
   ================================================== -->
   <script src="javascript/coffin.js"></script>
+
+
+  <!-- WEBFONT
+  ================================================== -->
+  <link href='http://fonts.googleapis.com/css?family=Raleway:700' rel='stylesheet' type='text/css'>
 
 <!-- End Document
 ================================================== -->
