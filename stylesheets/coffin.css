@@ -77,18 +77,27 @@ body {
 .coffin-remote:hover,
 .coffin-remote {
   position: absolute;
-  left: 5px;
-  top: 5px;
+  left: 10px;
+  top: 10px;
   border: 0;
   padding: 7px 10px;
-  background: rgba(255,255,255,.4);
+  background: #fff;
+  opacity: 1;
+        transition: opacity .4s;
+     -o-transition: opacity .4s; /* Opera */
+   -moz-transition: opacity .4s; /* Firefox 4 */
+-webkit-transition: opacity .4s; /* Safari and Chrome */
+
+}
+.coffin-remote:hover {
+  opacity: .8;
 }
 .coffin-remote-bar {
   display: block;
   width: 18px;
-  height: 1px;
+  height: 2px;
   margin-top: 4px;
-  background-color: #fff;
+  background-color: #ddd;
 }
 
 /* #Tablet (Portrait)

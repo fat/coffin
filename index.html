@@ -73,8 +73,12 @@
 
     <div class="container">
       <div class="sixteen columns content">
-        <h3 id="about">About Coffin</h3>
+        <h3 id="about">About Coffin </h3>
         <p>Coffin is a UI component built on top of the <a href="//getskeleton.com">Skeleton framework</a>. It aims to provide a simple, collapsible left shelf. Coffin is fully responsive and automatically collapses in mobile views - allowing you to swipe away and toggle a nagivation in and out of view. It behaves similar to facebook/path's navigation UI.<p>
+
+
+        <h5>Demo</h5>
+        <p>If you are on a desktop, click the menu button at north west corner of the document. If you are on mobile, simply swipe to the right.</p>
 
         <h5>Versioning</h5>
         <p>Coffin tries to adhere to semver as defined here <a href="http://semver.org/">http://semver.org/</a></p>
@@ -121,7 +125,20 @@
   <!-- JS
   ================================================== -->
   <script src="javascript/coffin.js"></script>
+  <script>
+    window.onload = function () {
+       
+      var title = document.querySelector('.hero-title')
 
+      if ('ontouchstart' in document.documentElement) return
+
+      window.addEventListener('scroll', function () {
+        title.style.opacity = 1 - (window.scrollY * .003)
+        title.style.top = - window.scrollY/4 + 'px'
+      })
+
+    }
+  </script>
 
   <!-- WEBFONT
   ================================================== -->
