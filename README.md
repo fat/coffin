@@ -1,4 +1,4 @@
-#Coffin - v1.0.0-rc.1
+# Coffin - v1.0.0-rc.1
 
 by @fat and @dhg
 
